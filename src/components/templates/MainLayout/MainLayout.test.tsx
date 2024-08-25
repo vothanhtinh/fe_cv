@@ -7,7 +7,7 @@ describe('MainLayout', () => {
     render(
       <MainLayout>
         <h1>MainLayout children</h1>
-      </MainLayout>
+      </MainLayout>,
     );
 
     // Assert

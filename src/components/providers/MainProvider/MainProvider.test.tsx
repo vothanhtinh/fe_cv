@@ -5,9 +5,9 @@ import { MainProvider } from '.';
 describe('MainProvider', () => {
   it('should render the children components', () => {
     render(
-      <MainProvider pageProps={{}}>
+      <MainProvider>
         <h1>MainLayout children</h1>
-      </MainProvider>
+      </MainProvider>,
     );
 
     // Assert

@@ -3,7 +3,8 @@
     "incremental": true, // https://nextjs.org/docs/basic-features/typescript#incremental-type-checking
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["./src/components/*"],
+      "@/*": ["./src/*"],
+      // "@/components/*": ["components/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/hooks/*": ["./src/hooks/*"],
@@ -11,7 +12,7 @@
       "@/mocks/*": ["./__mocks__/*"],
       "@/tests/*": ["./.jest/*"]
     },
-    "target": "es5",
+    "target": "es2015",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
