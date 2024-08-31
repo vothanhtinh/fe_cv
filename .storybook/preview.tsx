@@ -10,10 +10,10 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/
-      }
-    }
-  }
+        date: /Date$/,
+      },
+    },
+  },
 };
 
 // This is the place responsible for grouping all decorators from the storybook app

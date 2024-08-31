@@ -1,6 +1,6 @@
 import { Companies } from '@/components/organisms';
 import FeatureJobs from '@/components/organisms/Home/FeatureJobs/FeatureJobs';
-import SearchJobs from '@/components/organisms/Home/SearchJobs/SearchJobs';
+import SearchJobs from '@/components/organisms/Home/SearchJobs';
 
 const HomePage = () => (
   <div>
