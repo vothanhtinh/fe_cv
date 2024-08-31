@@ -1,5 +1,6 @@
 module.exports = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'cv-lake-eta.vercel.app'],
   },
+  transpileModules: ['string-width'],
 };

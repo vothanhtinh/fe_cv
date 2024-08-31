@@ -1,13 +1,11 @@
-import Image from 'next/image';
-
 import { Companies } from '@/components/organisms';
-import FeatureJobs from '@/components/organisms/Home/FeatureJobs';
+import FeatureJobs from '@/components/organisms/Home/featureJobs';
+import SearchJobs from '@/components/organisms/Home/searchJobs/searchJobs';
 
 const HomePage = () => (
   <div>
-    <div className='relative h-[300px]'>
-      <Image src='/bg_header.webp' alt='banner' fill={true} />
-    </div>
+    <SearchJobs />
+
     <FeatureJobs />
 
     <Companies />

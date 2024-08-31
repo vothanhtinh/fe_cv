@@ -17,7 +17,7 @@ export const Companies = () => {
             content: () => <Company {...item} />,
           })) ?? []
         }
-        title='Companies'
+        title='Top Công ty hàng đầu'
       />
     </div>
   );
