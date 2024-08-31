@@ -1,4 +1,3 @@
 export * from './companies';
 
-export * from './featureJobs';
-export * from './searchJobs';
+export * from './SearchJobs';
