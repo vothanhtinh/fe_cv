@@ -1,11 +1,11 @@
 'use client';
 import { useGetAllJobs } from '@/queries/jobs';
 import { IJob } from '@/types/backend';
-import { Col, Pagination, Row, Skeleton } from 'antd';
+import { Col, Row, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 import { JobItem } from './components/Item';
-import { TableWrapper } from './styled';
+import { StyledPagination, TableWrapper } from './styled';
 
 const FeatureJobs = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +25,7 @@ const FeatureJobs = () => {
 
   return (
     <>
-      <section className='pt-12 md:px-2 sm:px-1 h-full bg-[#f3f5f7]'>
+      <section className='mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 '>
         <TableWrapper>
           {isLoading ? (
             <Row gutter={[24, 24]} className='w-full'>
@@ -50,10 +50,10 @@ const FeatureJobs = () => {
             </Row>
           )}
         </TableWrapper>
-        <div className='flex justify-center py-4'>
-          <Pagination
+        <div className='flex justify-center py-4 mt-4'>
+          <StyledPagination
             size='small'
-            className='text-base'
+            className='text-base !text-green-500'
             defaultCurrent={1}
             total={data?.data.meta.total}
             pageSize={12}

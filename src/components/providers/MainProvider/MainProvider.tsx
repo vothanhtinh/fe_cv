@@ -10,6 +10,7 @@ import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import { Footer } from '../Footer';
 import Header from '../Header';
 interface Props {
   children: ReactNode;
@@ -28,6 +29,7 @@ export const MainProvider = ({ children }: Props) => {
           {!['/login', '/register'].includes(pathname) &&
             !pathname.startsWith('/admin') && <Header />}
           {children}
+          {!['/login', '/register'].includes(pathname) && <Footer />}
           <ReactQueryDevtools />
         </PersistGate>
       </Provider>

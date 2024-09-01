@@ -1,5 +1,4 @@
 'use client';
-import { RightCircleOutlined, LeftCircleOutlined } from '@ant-design/icons';
 import { Flex } from 'antd';
 import 'swiper/css';
 import React, { useRef } from 'react';
@@ -33,10 +32,48 @@ export const SwiperSlider: React.FC<SwiperSlideProps> = (props) => {
         {title}
         <Flex gap={10}>
           <WrapperIcon onClick={() => swiperRef.current?.slidePrev()}>
-            <LeftCircleOutlined />
+            <button
+              aria-label='Previous slide'
+              id='keen-slider-previous'
+              className='rounded-full border border-green-500 p-2 text-green-500 transition hover:bg-green-500 hover:text-white'
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth='1.5'
+                stroke='currentColor'
+                className='size-5 rtl:rotate-180'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d='M15.75 19.5L8.25 12l7.5-7.5'
+                />
+              </svg>
+            </button>
           </WrapperIcon>
           <WrapperIcon onClick={() => swiperRef.current?.slideNext()}>
-            <RightCircleOutlined />
+            <button
+              aria-label='Next slide'
+              id='keen-slider-next'
+              className='rounded-full border border-green-500 p-2 text-green-500 transition hover:bg-green-500 hover:text-white'
+            >
+              <svg
+                className='size-5 rtl:rotate-180'
+                fill='none'
+                stroke='currentColor'
+                viewBox='0 0 24 24'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <path
+                  d='M9 5l7 7-7 7'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                />
+              </svg>
+            </button>
           </WrapperIcon>
         </Flex>
       </Flex>

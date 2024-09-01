@@ -10,9 +10,13 @@ export const WrapperRegister = styled.div`
   height: 100%;
 `;
 
-export const WrapperForm = styled.div`
-  background: #ffffff;
-  width: 400px;
-  padding: 16px;
-  border-radius: 10px;
+export const WrapperForm = styled.section`
+  label {
+    min-width: 100px;
+    max-width: 100px;
+  }
+
+  .ant-form-item-explain-error {
+    font-size: 11px !important;
+  }
 `;

@@ -9,7 +9,7 @@ export const Company = (props: ICompany) => {
   const { logo, name } = props;
 
   return (
-    <Wrapper className='w-full  p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 '>
+    <Wrapper className='w-full  p-4 bg-white border border-green-500  shadow-xl transition hover:border-green-500/10 hover:shadow-green-500/10 rounded-lg'>
       <Flex justify='center' align='center'>
         <Image
           src={`${process.env.NEXT_PUBLIC_URL_BACKEND}/images/company/${logo}`}
