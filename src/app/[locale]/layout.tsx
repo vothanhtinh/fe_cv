@@ -1,8 +1,9 @@
 import '@/styles/globals.css';
 
 import { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
-import { ReactNode } from 'react';
 
 import { MainProvider } from '@/components/providers/MainProvider';
 
@@ -16,13 +17,19 @@ export const metadata: Metadata = {
     '🚀 Boilerplate and Starter for Next.js, Tailwind CSS and TypeScript ⚡️ Made with developer experience first: Next.js, TypeScript, ESLint, Prettier, Husky, Lint-Staged, Jest, React Testing Library, PostCSS, Tailwind CSS, Storybook, Plop, GH actions.',
 };
 
-interface RootLayoutProps {
-  children: ReactNode;
-}
+export default async function LocaleLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
 
-const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang='en'>
+    <html lang={locale}>
       <body
         className={cn(inter.variable, 'font-primary')}
         suppressHydrationWarning
@@ -32,10 +39,10 @@ const RootLayout = ({ children }: RootLayoutProps) => {
           overflowX: 'hidden',
         }}
       >
-        <MainProvider>{children}</MainProvider>
+        <NextIntlClientProvider messages={messages}>
+          <MainProvider>{children}</MainProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}

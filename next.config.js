@@ -1,4 +1,12 @@
-module.exports = {
+
+const createNextIntlPlugin = require('next-intl/plugin');
+
+
+const withNextIntl = createNextIntlPlugin();
+
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     domains: ['localhost', 'cv-lake-eta.vercel.app', 'media.istockphoto.com'],
     remotePatterns: [
@@ -15,4 +23,8 @@ module.exports = {
       },
     ],
   },
+ 
 };
+module.exports = withNextIntl(nextConfig);
+
+

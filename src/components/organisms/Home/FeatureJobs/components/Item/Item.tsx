@@ -9,7 +9,7 @@ export const JobItem = (props: IJob) => {
   const { company, name, level, location } = props;
 
   return (
-    <WrapperItem className=' border border-green-500 p-8 shadow-xl transition hover:border-green-500/10 hover:shadow-green-500/10'>
+    <WrapperItem className='overflow-hidden border border-green-500 p-8 shadow-xl transition hover:border-green-500/10 hover:shadow-green-500/10'>
       <Flex vertical gap={10}>
         <div className='flex items-center gap-5'>
           <Image

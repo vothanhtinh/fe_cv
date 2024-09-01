@@ -30,7 +30,7 @@ const FeatureJobs = () => {
           {isLoading ? (
             <Row gutter={[24, 24]} className='w-full'>
               {Array.from(Array(12).keys()).map((item, idx) => (
-                <Col className='gutter-row' span={8} key={idx}>
+                <Col className='gutter-row' span={8} md={8} xs={12} key={idx}>
                   <Skeleton key={idx} />
                 </Col>
               ))}
@@ -43,7 +43,7 @@ const FeatureJobs = () => {
               }}
             >
               {listJobs.map((item, idx) => (
-                <Col className='gutter-row' span={8} key={idx}>
+                <Col className='gutter-row' span={8} md={8} xs={12} key={idx}>
                   <JobItem {...item} />
                 </Col>
               ))}
