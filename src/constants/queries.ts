@@ -3,4 +3,5 @@ export const QUERY_KEYS = {
   USERS: 'USERS',
   COMPANIES: 'COMPANIES',
   JOBS: 'JOBS',
+  JOBS_DETAIL: 'JOBS_DETAIL',
 } as const;

@@ -1,3 +1,4 @@
+import { Link } from '@/i18n/routing';
 import { IJob } from '@/types/backend';
 import { Flex, Typography } from 'antd';
 import Image from 'next/image';
@@ -6,7 +7,7 @@ import { WrapperItem } from './styled';
 
 const { Paragraph } = Typography;
 export const JobItem = (props: IJob) => {
-  const { company, name, level, location } = props;
+  const { company, name, level, location, _id } = props;
 
   return (
     <WrapperItem className='overflow-hidden border border-green-500 p-8 shadow-xl transition hover:border-green-500/10 hover:shadow-green-500/10'>
@@ -24,15 +25,17 @@ export const JobItem = (props: IJob) => {
               overflow: 'hidden',
             }}
           >
-            <Paragraph
-              ellipsis={{
-                tooltip: company?.name,
-                rows: 1,
-              }}
-              className=' text-[14px] font-medium'
-            >
-              {company?.name}
-            </Paragraph>
+            <Link href={`/jobs/${_id}`}>
+              <Paragraph
+                ellipsis={{
+                  tooltip: company?.name,
+                  rows: 1,
+                }}
+                className=' text-[14px] font-medium'
+              >
+                {company?.name}
+              </Paragraph>
+            </Link>
 
             <Paragraph
               ellipsis={{

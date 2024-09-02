@@ -21,3 +21,9 @@ export const createJobs = async (data: Partial<IJob>) => {
     // console.log(error);
   }
 };
+
+export const getJobDetail = async (id: string) => {
+  const results = await get<IJob>(`${pathUrl}/${id}`);
+
+  return results.data;
+};

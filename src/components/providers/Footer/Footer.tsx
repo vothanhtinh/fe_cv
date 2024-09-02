@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const Footer = () => {
   return (
-    <footer className='bg-white lg:grid lg:grid-cols-5 mt-4'>
+    <footer className='bg-white lg:grid lg:grid-cols-5 mt-16'>
       <div className='relative block h-32 lg:col-span-2 lg:h-full'>
         <Image
           fill
