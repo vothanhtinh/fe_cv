@@ -18,12 +18,12 @@ export const WrapperButton = styled(Button)`
   }
 
   :hover {
-    &.ant-btn-default {
+    .ant-btn-default {
       color: #22c55e !important;
       opacity: 0.8 !important;
     }
 
-    &.ant-btn-primary {
+    .ant-btn-primary {
       background-color: #22c55e !important;
       opacity: 0.8 !important;
     }

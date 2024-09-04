@@ -31,7 +31,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={cn(inter.variable, 'font-primary')}
+        className={cn(inter.variable, 'font-primary scrollbar')}
         suppressHydrationWarning
         style={{
           height: '100vh',
