@@ -26,6 +26,9 @@ const FeatureJobs = () => {
   return (
     <>
       <section className='mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4 '>
+        <h2 className='p-2 text-green-500 text-xl font-bold sm:text-2xl mb-4'>
+          Việc làm tốt nhất
+        </h2>
         <TableWrapper>
           {isLoading ? (
             <Row gutter={[24, 24]} className='w-full'>
@@ -36,14 +39,9 @@ const FeatureJobs = () => {
               ))}
             </Row>
           ) : (
-            <Row
-              gutter={[24, 24]}
-              style={{
-                margin: '0',
-              }}
-            >
+            <Row gutter={[24, 24]}>
               {listJobs.map((item, idx) => (
-                <Col className='gutter-row' span={8} md={8} xs={12} key={idx}>
+                <Col className='gutter-row ' span={8} md={8} xs={12} key={idx}>
                   <JobItem {...item} />
                 </Col>
               ))}
