@@ -29,7 +29,7 @@ export interface IGetAccount extends Omit<IAccount, 'access_token'> {}
 
 export interface ICompany {
   _id: string;
-  name?: string;
+  name: string;
   address?: string;
   description?: string;
   createdBy?: string;

@@ -12,7 +12,6 @@ import { callLogoutUser } from './auth.api';
 
 const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_URL_BACKEND}api/v1`,
-  // withCredentials: true,
 });
 
 const mutex = new Mutex();

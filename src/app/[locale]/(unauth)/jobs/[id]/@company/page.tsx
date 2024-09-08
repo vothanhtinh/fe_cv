@@ -1,5 +1,6 @@
 'use client';
 
+import { Link } from '@/i18n/routing';
 import { useGetJobById } from '@/queries';
 import Image from 'next/image';
 
@@ -16,7 +17,7 @@ const CompanyDetailPage = ({ params: { id } }: { params: { id: string } }) => {
         width={100}
         height={100}
       />
-      <div>{company?.name}</div>
+      <Link href={`/company/${company?._id}`}>{company?.name}</Link>
     </div>
   );
 };

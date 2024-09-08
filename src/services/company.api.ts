@@ -19,3 +19,9 @@ export const createCompany = async (data: Partial<ICompany>) => {
     // console.log(error);
   }
 };
+
+export const getCompanyDetail = async (id: string) => {
+  const results = await get<ICompany>(`${pathUrl}/${id}`);
+
+  return results.data;
+};

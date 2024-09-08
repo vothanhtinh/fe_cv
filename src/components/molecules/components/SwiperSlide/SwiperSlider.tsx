@@ -1,5 +1,5 @@
 'use client';
-import { Flex } from 'antd';
+import { Col, Flex, Row, Skeleton } from 'antd';
 import 'swiper/css';
 import React, { useRef } from 'react';
 import SwiperClass from 'swiper';
@@ -19,10 +19,17 @@ type SwiperSlideProps = {
   slidesPerView?: number;
   spaceBetween?: number;
   title?: React.ReactNode;
+  isLoading?: boolean;
 };
 
 export const SwiperSlider: React.FC<SwiperSlideProps> = (props) => {
-  const { data, slidesPerView = 4, spaceBetween = 50, title } = props;
+  const {
+    data,
+    slidesPerView = 4,
+    spaceBetween = 50,
+    title,
+    isLoading,
+  } = props;
 
   const swiperRef = useRef<SwiperClass>();
 
@@ -77,24 +84,34 @@ export const SwiperSlider: React.FC<SwiperSlideProps> = (props) => {
           </WrapperIcon>
         </Flex>
       </Flex>
-      <Swiper
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        spaceBetween={spaceBetween}
-        slidesPerView={slidesPerView}
-        pagination={{ clickable: true }}
-        onSlideChange={() => {}}
-        className='w-full h-full'
-      >
-        {data.map((item: SwiperSlideProps['data'][0]) => (
-          <div key={item.id}>
-            <SwiperSlide className='flex justify-center items-center'>
-              {item.content()}
-            </SwiperSlide>
-          </div>
-        ))}
-      </Swiper>
+      {isLoading ? (
+        <Row gutter={[24, 24]} className='w-full'>
+          {Array.from(Array(4).keys()).map((item, idx) => (
+            <Col className='gutter-row' span={6} md={6} xs={12} key={idx}>
+              <Skeleton key={idx} />
+            </Col>
+          ))}
+        </Row>
+      ) : (
+        <Swiper
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          spaceBetween={spaceBetween}
+          slidesPerView={slidesPerView}
+          pagination={{ clickable: true }}
+          onSlideChange={() => {}}
+          className='w-full h-full'
+        >
+          {data.map((item: SwiperSlideProps['data'][0]) => (
+            <div key={item.id}>
+              <SwiperSlide className='flex justify-center items-center'>
+                {item.content()}
+              </SwiperSlide>
+            </div>
+          ))}
+        </Swiper>
+      )}
     </>
   );
 };

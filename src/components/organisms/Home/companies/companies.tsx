@@ -6,7 +6,7 @@ import { SwiperSlider } from '@/components/molecules/components';
 import { Company } from './components/company';
 
 export const Companies = () => {
-  const { data } = useGetAllCompanies();
+  const { data, isLoading } = useGetAllCompanies();
 
   return (
     <div className='mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-3 lg:px-8 lg:py-4'>
@@ -22,6 +22,7 @@ export const Companies = () => {
             Top công ty nổi bật
           </h2>
         }
+        isLoading={isLoading}
       />
     </div>
   );
