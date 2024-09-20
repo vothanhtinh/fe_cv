@@ -18,4 +18,8 @@ export const StyledPagination = styled(Pagination)`
   .ant-pagination-item-active a {
     color: #00b14f !important;
   }
+
+  .ant-pagination-item-link {
+    color: #00b14f !important;
+  }
 `;

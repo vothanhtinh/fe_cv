@@ -4,8 +4,10 @@
 
 import { useLogoutUser } from '@/queries/auth/useLogout';
 import { setLogoutAction } from '@/store/slices/userSlice';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, MoonOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps, Space } from 'antd';
+import classnames from 'classnames';
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -35,33 +37,16 @@ const itemsNav: MenuProps['items'] = [
   {
     label: 'Công cụ',
     key: 'SubMenu',
-    children: [
-      {
-        type: 'group',
-        label: 'Item 1',
-      },
-      {
-        type: 'group',
-        label: 'Item 2',
-        children: [
-          {
-            label: 'Option 3',
-            key: 'setting:3',
-          },
-          {
-            label: 'Option 4',
-            key: 'setting:4',
-          },
-        ],
-      },
-    ],
   },
 ];
 
 export default function Header() {
   const dispatch = useDispatch();
+  const { setTheme, theme } = useTheme();
   const { mutation } = useLogoutUser();
+
   const user = useSelector((state: any) => state.userSlice.user);
+
   const handleLogoutUser = () => {
     dispatch(setLogoutAction());
     mutation.mutate();
@@ -98,10 +83,14 @@ export default function Header() {
   };
 
   return (
-    <HeaderWrapper className='flex bg-white px-10 items-center h-[80px] overflow-hidden'>
+    <HeaderWrapper
+      className={classnames(
+        'flex bg-white dark:bg-[#121212] px-10 items-center h-[80px] overflow-hidden gap-3',
+      )}
+    >
       <Link href={'/'}>
         <Image
-          src={'/topcv-logo-6.webp'}
+          src={'/logo.webp'}
           width={200}
           height={78}
           alt='logo'
@@ -114,7 +103,11 @@ export default function Header() {
         selectedKeys={[current]}
         mode='horizontal'
         items={itemsNav}
-        className='w-full font-medium'
+        className='w-full font-medium  '
+        theme={theme === 'dark' ? 'dark' : 'light'}
+      />
+      <MoonOutlined
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       />
       <ul className='flex gap-3'>
         {!user?.email ? (

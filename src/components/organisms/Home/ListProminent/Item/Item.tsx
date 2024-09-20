@@ -33,7 +33,9 @@ export const Item = (props: TITem) => {
             />
           </svg>
 
-          <h2 className='text-xl font-medium text-black'>{title}</h2>
+          <h2 className='text-xl font-medium text-black dark:text-white'>
+            {title}
+          </h2>
         </Flex>
         <p className='mt-1 text-sm text-green-500 text-center'>
           {total.toLocaleString()} việc làm

@@ -31,7 +31,7 @@ export const JobItem = (props: IJob) => {
                   tooltip: company?.name,
                   rows: 1,
                 }}
-                className=' text-[14px] font-medium'
+                className=' text-[14px] font-medium dark:text-white'
               >
                 {company?.name}
               </Paragraph>
@@ -42,15 +42,15 @@ export const JobItem = (props: IJob) => {
                 tooltip: name,
                 rows: 2,
               }}
-              className=' text-[12px] font-medium h-[37px]'
+              className=' text-[12px] font-medium h-[37px] dark:text-white'
             >
               {name}
             </Paragraph>
 
-            <div className='text-sm text-gray-600 flex items-center gap-6'>
+            <div className='text-sm text-gray-600 flex items-center gap-6 dark:text-white'>
               <span className='flex items-center gap-2'>
                 <svg
-                  className='w-5 h-5 text-gray-500'
+                  className='w-5 h-5 text-gray-500 '
                   viewBox='0 0 20 20'
                   fill='none'
                   xmlns='http://www.w3.org/2000/svg'
@@ -68,7 +68,7 @@ export const JobItem = (props: IJob) => {
                 </svg>
                 {level}
               </span>
-              <span className='flex items-center gap-2'>
+              <span className='flex items-center gap-2 dark:text-white'>
                 <svg
                   className='w-5 h-5 text-gray-500'
                   viewBox='0 0 20 20'

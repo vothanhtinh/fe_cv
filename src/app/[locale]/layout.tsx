@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import { Inter } from 'next/font/google';
 
 import { MainProvider } from '@/components/providers/MainProvider';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 
 import { cn } from '@/lib/utils';
 
@@ -39,9 +40,16 @@ export default async function LocaleLayout({
           overflowX: 'hidden',
         }}
       >
-        <NextIntlClientProvider messages={messages}>
-          <MainProvider>{children}</MainProvider>
-        </NextIntlClientProvider>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
+            <MainProvider>{children}</MainProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

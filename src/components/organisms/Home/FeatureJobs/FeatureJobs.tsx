@@ -51,7 +51,7 @@ const FeatureJobs = () => {
         <div className='flex justify-center py-4 mt-4'>
           <StyledPagination
             size='small'
-            className='text-base !text-green-500'
+            className='text-base !text-green-500 '
             defaultCurrent={1}
             total={data?.data.meta.total}
             pageSize={12}

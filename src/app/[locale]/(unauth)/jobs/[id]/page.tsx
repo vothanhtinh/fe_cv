@@ -4,6 +4,7 @@ import {
   NotificationOutlined,
 } from '@ant-design/icons';
 import { Divider, Flex } from 'antd';
+import { notFound } from 'next/navigation';
 
 import { Button } from '@/components/atoms';
 import { InfoBlock } from '@/components/organisms';
@@ -19,6 +20,8 @@ const JobDetailPage = async ({
   const response = await data.json();
 
   const jobInfo = response.data;
+
+  if (!jobInfo) return notFound();
 
   return (
     <>
@@ -117,7 +120,7 @@ const JobDetailPage = async ({
         </Button>
       </Flex>
       <div
-        dangerouslySetInnerHTML={{ __html: jobInfo?.description }}
+        dangerouslySetInnerHTML={{ __html: jobInfo?.description || '' }}
         className='mt-4 text-sm'
       />
     </>
