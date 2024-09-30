@@ -1,6 +1,6 @@
 'use client';
 import { useRegisterUser } from '@/queries/auth/useRegister';
-import { IUser } from '@/types/backend';
+import { TUser } from '@/types';
 import { Flex, Form, Input } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ const RegisterPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IUser>({
+  } = useForm<TUser>({
     defaultValues: {
       name: '',
       email: '',
@@ -25,7 +25,7 @@ const RegisterPage = () => {
     },
   });
 
-  const onFinish = async (values: IUser) => {
+  const onFinish = async (values: TUser) => {
     const { name, email, password, age, gender, address } = values;
     await mutation.mutateAsync({ name, email, password, age, gender, address });
   };

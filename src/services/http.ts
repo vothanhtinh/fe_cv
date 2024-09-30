@@ -7,6 +7,7 @@ import {
 import { message } from 'antd';
 import { Mutex } from 'async-mutex';
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { getCookie, setCookie } from 'cookies-next';
 
 import { callLogoutUser } from './auth.api';
 
@@ -24,8 +25,9 @@ const handleRefreshToken = async (): Promise<string> => {
     else return null;
   });
 };
+
 axiosInstance.interceptors.request.use((config: any) => {
-  const token = localStorage.getItem('access_token');
+  const token = getCookie('access_token');
 
   if (token) {
     config.headers.Authorization = 'Bearer ' + token;
@@ -35,7 +37,7 @@ axiosInstance.interceptors.request.use((config: any) => {
 });
 
 axiosInstance.interceptors.response.use(
-  (response: any) => response.data,
+  (response: any) => response,
   async (error: any) => {
     if (
       error.config &&
@@ -48,7 +50,7 @@ axiosInstance.interceptors.response.use(
       error.config.headers[NO_RETRY_HEADER] = 'true';
       if (access_token) {
         error.config.headers['Authorization'] = `Bearer ${access_token}`;
-        localStorage.setItem('access_token', access_token);
+        setCookie('access_token', access_token);
 
         return axiosInstance.request(error.config);
       } else {
@@ -96,6 +98,14 @@ export const put = <T>(
   config?: AxiosRequestConfig,
 ): Promise<AxiosResponse<T>> => {
   return axiosInstance.put<T>(url, data, config);
+};
+
+export const patch = <T>(
+  url: string,
+  data?: any,
+  config?: AxiosRequestConfig,
+): Promise<AxiosResponse<T>> => {
+  return axiosInstance.patch<T>(url, data, config);
 };
 
 export const remove = <T>(

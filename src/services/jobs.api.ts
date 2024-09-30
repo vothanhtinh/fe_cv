@@ -1,18 +1,19 @@
-import { IJob, IModelPaginate } from '@/types/backend';
+import { TJob } from '@/types';
+import { IBackendRes, IModelPaginate } from '@/types/backend';
 
 import { post, get } from './http';
 
 const pathUrl = '/jobs';
 
 export const getAllJobs = async (currentPage: number) => {
-  const results = await get<IModelPaginate<IJob>>(
+  const results = await get<IBackendRes<IModelPaginate<TJob>>>(
     `${pathUrl}?current=${currentPage}&pageSize=12`,
   );
 
-  return results;
+  return results.data.data;
 };
 
-export const createJobs = async (data: Partial<IJob>) => {
+export const createJobs = async (data: Partial<TJob>) => {
   try {
     const results = await post(pathUrl, data);
 
@@ -23,7 +24,7 @@ export const createJobs = async (data: Partial<IJob>) => {
 };
 
 export const getJobDetail = async (id: string) => {
-  const results = await get<IJob>(`${pathUrl}/${id}`);
+  const results = await get<IBackendRes<TJob>>(`${pathUrl}/${id}`);
 
-  return results.data;
+  return results.data.data;
 };

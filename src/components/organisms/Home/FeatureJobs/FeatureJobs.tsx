@@ -1,6 +1,6 @@
 'use client';
 import { useGetAllJobs } from '@/queries/jobs';
-import { IJob } from '@/types/backend';
+import { TJob } from '@/types';
 import { Col, Row, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
 
@@ -11,11 +11,11 @@ const FeatureJobs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading } = useGetAllJobs(currentPage);
 
-  const [listJobs, setListJobs] = useState<IJob[] | []>([]);
+  const [listJobs, setListJobs] = useState<TJob[] | []>([]);
 
   useEffect(() => {
     if (data) {
-      setListJobs(data.data?.result);
+      setListJobs(data.result);
     }
   }, [data]);
 
@@ -40,7 +40,7 @@ const FeatureJobs = () => {
             </Row>
           ) : (
             <Row gutter={[24, 24]}>
-              {listJobs.map((item, idx) => (
+              {listJobs.map((item: TJob, idx) => (
                 <Col className='gutter-row ' span={8} md={8} xs={12} key={idx}>
                   <JobItem {...item} />
                 </Col>
@@ -53,7 +53,7 @@ const FeatureJobs = () => {
             size='small'
             className='text-base !text-green-500 '
             defaultCurrent={1}
-            total={data?.data.meta.total}
+            total={data?.meta.total || 0}
             pageSize={12}
             onChange={onChangePage}
           />

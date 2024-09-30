@@ -22,12 +22,15 @@ const queryClient = new QueryClient();
 export const MainProvider = ({ children }: Props) => {
   const pathname = usePathname();
 
+  const isShowHeader = !(
+    pathname.includes('/login') || pathname.includes('/register')
+  );
+
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          {!['/login', '/register'].includes(pathname) &&
-            !pathname.startsWith('/admin') && <Header />}
+          {isShowHeader && <Header />}
           {children}
           {!['/login', '/register'].includes(pathname) && <Footer />}
           <ReactQueryDevtools />

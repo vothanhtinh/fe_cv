@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IUser } from '@/types/backend';
+import { TUser } from '@/types';
 
 import { post, get } from './http';
 
 const pathUrl = '/auth/login';
 
-export const handleLoginUser = async (user: any) => {
+export const handleLoginUser = async (user: Partial<TUser>) => {
   const result = await post(pathUrl, user);
 
   return result;
 };
 
-export const callRegisterUser = async (user: IUser) => {
+export const callRegisterUser = async (user: TUser) => {
   const { age } = user;
   const newAge = Number(age);
   const result = await post('/auth/register', { ...user, age: newAge });

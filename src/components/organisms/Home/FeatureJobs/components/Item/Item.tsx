@@ -1,12 +1,12 @@
 import { Link } from '@/i18n/routing';
-import { IJob } from '@/types/backend';
+import { TJob } from '@/types';
 import { Flex, Typography } from 'antd';
 import Image from 'next/image';
 
 import { WrapperItem } from './styled';
 
 const { Paragraph } = Typography;
-export const JobItem = (props: IJob) => {
+export const JobItem = (props: TJob) => {
   const { company, name, level, location, _id } = props;
 
   return (

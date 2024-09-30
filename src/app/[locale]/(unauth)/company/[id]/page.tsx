@@ -1,4 +1,4 @@
-import { ICompany } from '@/types/backend';
+import { TCompany } from '@/types';
 import { EnvironmentOutlined } from '@ant-design/icons';
 import { Flex } from 'antd';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ const JobDetailPage = async ({
   );
   const response = await data.json();
 
-  const companyInfo: ICompany = response.data;
+  const companyInfo: TCompany = response.data;
 
   const { name, logo, description, address } = companyInfo;
 

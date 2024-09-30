@@ -29,7 +29,6 @@ export const userSlice = createSlice({
       };
     },
     setLogoutAction: (state) => {
-      localStorage.removeItem('access_token');
       state.isAuthenticated = false;
       state.user = {
         email: '',

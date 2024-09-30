@@ -4,10 +4,7 @@ import { useLoginUser } from '@/queries/auth';
 import { Spin } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
 
 import { SidebarRight } from './styled';
 
@@ -18,15 +15,6 @@ type FormValues = {
 
 export default function LoginPage() {
   const { mutation, isLoading } = useLoginUser();
-  const user = useSelector((state: any) => state.userSlice.user);
-
-  const router = useRouter();
-
-  useEffect(() => {
-    if (user?._id !== '') {
-      router.replace('/');
-    }
-  }, [router, user?._id]);
 
   const {
     handleSubmit,

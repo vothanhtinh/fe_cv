@@ -7,6 +7,7 @@ import { setLogoutAction } from '@/store/slices/userSlice';
 import { UserOutlined, MoonOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps, Space } from 'antd';
 import classnames from 'classnames';
+import { deleteCookie } from 'cookies-next';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,6 +15,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { BorderBeam } from '@/components/atoms/BorderBem';
+
+import { checkAuthentication, checkIsRoleAdmin } from '@/lib/auth';
 
 import { HeaderWrapper, NavbarItem, StyledMenu } from './styled';
 
@@ -45,24 +48,20 @@ export default function Header() {
   const { setTheme, theme } = useTheme();
   const { mutation } = useLogoutUser();
 
-  const user = useSelector((state: any) => state.userSlice.user);
-
+  const isAuthen = checkAuthentication();
+  const isAdmin = checkIsRoleAdmin();
   const handleLogoutUser = () => {
+    deleteCookie('access_token');
+
     dispatch(setLogoutAction());
     mutation.mutate();
+
     window.location.href = '/';
   };
 
   const items = [
     {
-      label: (
-        <label
-          style={{ cursor: 'pointer' }}
-          onClick={() => setShowManageAccount(true)}
-        >
-          Quản lý tài khoản
-        </label>
-      ),
+      label: <Link href={'/account'}>Quản lý tài khoản</Link>,
       key: 'account',
     },
 
@@ -76,7 +75,6 @@ export default function Header() {
     },
   ];
   const [current, setCurrent] = useState('');
-  const [showManageAccount, setShowManageAccount] = useState(false);
 
   const onClick: MenuProps['onClick'] = (e) => {
     setCurrent(e.key);
@@ -110,7 +108,7 @@ export default function Header() {
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       />
       <ul className='flex gap-3'>
-        {!user?.email ? (
+        {!isAuthen ? (
           <>
             <NavbarItem>
               <Link

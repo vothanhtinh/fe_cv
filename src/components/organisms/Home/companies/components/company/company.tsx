@@ -1,4 +1,4 @@
-import { ICompany } from '@/types/backend';
+import { TCompany } from '@/types';
 import { Flex, Typography } from 'antd';
 import Image from 'next/image';
 
@@ -7,7 +7,7 @@ import { getUrlImage } from '@/lib/utils';
 import { Wrapper } from './styled';
 
 const { Paragraph } = Typography;
-export const Company = (props: ICompany) => {
+export const Company = (props: TCompany) => {
   const { logo, name } = props;
 
   const imageUrl = getUrlImage(logo ?? '', 'company');
